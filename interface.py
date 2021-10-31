@@ -44,7 +44,7 @@ layout = [
     ]
 ]
 
-window = sg.Window("Image Viewer", layout)
+window = sg.Window("Medi Modellor", layout)
 
 # Run the Event Loop
 while True:
