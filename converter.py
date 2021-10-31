@@ -1,9 +1,10 @@
 from PIL import Image
 import numpy as np
 from stl import mesh
+import cv2
 
-def convertImage(imgPath):
-    grey_img = Image.open('teeth.jpg').convert('L')
+def convertImage(imgPath,opname):
+    grey_img = Image.open(imgPath).convert('L')
 
     max_size=(500,500)
     max_height=50
@@ -59,5 +60,13 @@ def convertImage(imgPath):
         for j in range(3):
             surface.vectors[i][j] = facesNp[i][j]
     # Write the mesh to file "cube.stl"
-    surface.save('surface.stl')
+    opname = opname+'.stl'
+    surface.save(opname)
     print(surface)
+
+def imageProcessing(imgPath,opname):
+    img = cv2.imread(imgPath)
+    #converted_img = cv2.cvtColor(img, cv2.COLOR_GRAY2BGR)
+    dst = cv2.fastNlMeansDenoisingColored(img,None,10,10,7,21)
+    cv2.imwrite('processedimg.png',dst)
+    convertImage('processedimg.png',opname)

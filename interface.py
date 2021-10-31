@@ -7,6 +7,7 @@ import converter
 
 beingConverted = False
 filename = ''
+opname=''
 
 # First the window layout in 2 columns
 file_list_column = [
@@ -19,6 +20,10 @@ file_list_column = [
         sg.Listbox(
             values=[], enable_events=True, size=(40, 20), key="-FILE LIST-"
         )
+    ],
+    [
+        sg.Text("Save File As:"),
+        sg.In(size=(25,1),enable_events=True,key='-NAMED-')
     ],
 ]
 
@@ -50,7 +55,7 @@ while True:
     if event == 'Convert':
         beingConverted = True
         window["-MESSAGE-"].update('Converting Img to 3D model...')
-        converter.convertImage(filename)
+        converter.imageProcessing(filename,opname)
         print('Done')
         beingConverted = False
         window["-MESSAGE-"].update('Choose an image from list on the left')
@@ -72,6 +77,8 @@ while True:
             and f.lower().endswith((".png", ".gif","jpg","jpeg"))
         ]
         window["-FILE LIST-"].update(fnames)
+    if event == '-NAMED-':
+        opname=values['-NAMED-']
     elif event == "-FILE LIST-":  # A file was chosen from the listbox
         if beingConverted == True:
             window["-MESSAGE-"].update('Converting Img to 3D model...')
