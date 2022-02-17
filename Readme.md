@@ -17,4 +17,7 @@ Uses computer-vision and AI-based image processing & noise reduction techniques.
 - Further research work can be done on the models using 3D manipulation software.
 # I hope...
 **Medi-Modellor and apps like it empowers many visually-handicapped people out there who hopes to become doctors**
-
+# Demo
+## Input
+[!interface](/Results/OutputModels/interface.png)
+[!result](/Results/OutputModels/bone1.png)
