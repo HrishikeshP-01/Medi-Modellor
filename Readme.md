@@ -20,4 +20,5 @@ Uses computer-vision and AI-based image processing & noise reduction techniques.
 # Demo
 ## Input
 ![interface](/Results/OutputModels/interface.png)
+## Output
 ![result](/Results/OutputModels/bone1.png)
